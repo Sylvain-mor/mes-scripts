@@ -1,0 +1,33 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  annotations:
+    meta.helm.sh/release-name: monitoring
+    meta.helm.sh/release-namespace: monitoring
+  creationTimestamp: "2026-09-20T08:55:05Z"
+  generation: 1
+  labels:
+    app.kubernetes.io/component: metrics
+    app.kubernetes.io/instance: monitoring
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/name: prometheus-node-exporter
+    app.kubernetes.io/part-of: prometheus-node-exporter
+    app.kubernetes.io/version: 1.12.1
+    helm.sh/chart: prometheus-node-exporter-4.57.0
+    release: monitoring
+  name: monitoring-prometheus-node-exporter
+  namespace: monitoring
+  resourceVersion: "22381"
+  uid: 2ab11d7d-eb90-4253-aefb-034030c6bd28
+spec:
+  attachMetadata:
+    node: false
+  endpoints:
+  - port: http-metrics
+    scheme: http
+    target: 172.19.0.2
+  jobLabel: jobLabel
+  selector:
+    matchLabels:
+      app.kubernetes.io/instance: monitoring
+      app.kubernetes.io/name: prometheus-node-exporter
